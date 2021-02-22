@@ -17,4 +17,12 @@ public class UserServices {
 	public List<User> findAll(){
 		return repo.findAll();
 	}
+	
+	public User findById(String id) {
+		User user = repo.findOne(id);
+		if (user == null) {
+			throw new ObjectNotFoundException("Objeto não encontrado");
+		}
+		return user;
+	}
 }
