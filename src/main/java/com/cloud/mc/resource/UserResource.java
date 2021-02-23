@@ -47,10 +47,23 @@ public class UserResource {
 		return ResponseEntity.created(uri).build();
 	}
 	
+<<<<<<< HEAD
 	@RequestMapping(value = "/{id}", method=RequestMethod.DELETE)
 	public ResponseEntity<Void> insert(@RequestBody UserDTO objDto) {
 		
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
+=======
+	@RequestMapping(value = "/{id}", method=RequestMethod.PUT)
+	public ResponseEntity<Void> update(@RequestBody UserDTO objDto) {
+		User obj = service.fromDTO(objDto);
+		// obj.setId(id);
+		obj = service.update(obj);
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
+		return ResponseEntity.created(uri).build();
+	}
+	
+	
+>>>>>>> desenvolvimento_8
 }
