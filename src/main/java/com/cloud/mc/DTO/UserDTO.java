@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import com.cloud.mc.domain.User;
 
+
 public class UserDTO implements Serializable {
 
 

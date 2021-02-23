@@ -23,6 +23,7 @@ public class UserResource {
 
 	@Autowired
 	private UserServices service;
+	private String id;
 	
 	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<List<UserDTO>> findAll() {
@@ -38,7 +39,7 @@ public class UserResource {
 	}
 	
 	@RequestMapping(value = "/{id}", method=RequestMethod.POST)
-	public ResponseEntity<Void> insert(@RequestBody UserDTO objDto) {
+	public ResponseEntity<Void> insert1(@RequestBody UserDTO objDto) {
 		
 		User obj = service.fromDTO(objDto);
 		obj = service.insert(obj);
@@ -46,5 +47,10 @@ public class UserResource {
 		return ResponseEntity.created(uri).build();
 	}
 	
-	
+	@RequestMapping(value = "/{id}", method=RequestMethod.DELETE)
+	public ResponseEntity<Void> insert(@RequestBody UserDTO objDto) {
+		
+		service.delete(id);
+		return ResponseEntity.noContent().build();
+	}
 }
