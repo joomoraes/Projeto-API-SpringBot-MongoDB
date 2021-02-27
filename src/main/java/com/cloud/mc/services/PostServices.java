@@ -26,5 +26,9 @@ public class PostServices {
 		}
 		return post;
 	}
+	
+	public List<User> findByTitle(String text) {
+		return repo.findAll();
+	}
 
 }

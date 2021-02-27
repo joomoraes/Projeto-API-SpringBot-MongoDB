@@ -5,9 +5,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cloud.mc.domain.User;
+import com.cloud.mc.resource.util.URL;
 import com.cloud.mc.services.PostServices;
 
 @RestController
@@ -23,6 +25,16 @@ public class PostResource {
 	
 	@RequestMapping(value = "/{id}", method=RequestMethod.GET)
 	public ResponseEntity<User> findById(@PathVariable String id) {
+		User obj = service.findById(id);
+		return ResponseEntity.ok().body(obj);
+	}
+	
+
+
+	@RequestMapping(value = "/titlesearch", method=RequestMethod.GET)
+	public ResponseEntity<User> findById1(@RequestParam(value = "text", defaultValue="") String text) {
+		text = URL.decodeParam(text);
+		
 		User obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
 	}
