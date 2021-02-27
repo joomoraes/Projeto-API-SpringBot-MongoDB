@@ -1,6 +1,7 @@
 package com.cloud.mc.config;
 
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.TimeZone;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,5 +44,8 @@ public class Instantiation implements CommandLineRunner {
 		// postRepository.save(Arrays.asList(maria, post2));
 		
 		// userRepository.save(Arrays.asList(maria, alex, bob));
+		
+		maria.getPost().addAll(Arrays.asList(post1, post2));
+		userRepository.save(maria);
 	}
 }
