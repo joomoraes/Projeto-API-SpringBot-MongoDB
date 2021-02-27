@@ -30,14 +30,12 @@ public class UserServices {
 	public User insert(User obj) {
 		return repo.insert(obj);
 	}
-	
-<<<<<<< HEAD
+
 	public void delete(String id) {
 		findById(id);
 		repo.deleteById(id);
 	}
-	
-=======
+
 	public User update(User obj) {
 		User newObj = repo.findOne(obj.getId());
 		updateData(newObj, obj);
@@ -49,10 +47,7 @@ public class UserServices {
 		newObj.setEmail(obj.getEmail());
 	}
 
->>>>>>> desenvolvimento_8
 	public User fromDTO(UserDTO objDto) {
 		return new User(objDto.getId(), objDto.getName(), objDto.getEmail());
 	}
-	
-	
 }
